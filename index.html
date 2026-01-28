@@ -42,9 +42,9 @@ html[data-theme="pink"] body::before {
 
 html[data-theme="pink"] body {
   background:
-    radial-gradient(circle at 20% 30%, rgba(255,210,230,0.5), transparent 45%),
-    radial-gradient(circle at 80% 70%, rgba(255,150,200,0.45), transparent 45%),
-    linear-gradient(135deg, #ff5fa2, #ff8acb);
+    radial-gradient(circle at 20% 30%, rgba(255, 131, 187, 0.5), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(255, 0, 0, 0.5), transparent 45%),
+    linear-gradient(180deg, #ffcce8, #ff006a);
 }
 
 html[data-theme="pink"] .banner {
@@ -76,9 +76,9 @@ html[data-theme="dark"] body::before {
 
 html[data-theme="dark"] body {
   background:
-    radial-gradient(circle at 20% 20%, rgba(90,90,140,0.25), transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(40,40,60,0.35), transparent 50%),
-    linear-gradient(135deg, #0b0b12, #141421);
+    radial-gradient(circle at 20% 20%, rgba(224, 224, 255, 0.25), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(70, 224, 255, 0.35), transparent 50%),
+    linear-gradient(180deg, #5009ad, #0627e4);
 }
 
 html[data-theme="dark"] .banner {
@@ -112,7 +112,7 @@ html[data-theme="blue"] body {
   background:
     radial-gradient(circle at 25% 20%, rgba(170,210,255,0.45), transparent 45%),
     radial-gradient(circle at 75% 80%, rgba(100,160,255,0.4), transparent 45%),
-    linear-gradient(135deg, #1e3c72, #2a5298);
+    linear-gradient(180deg, #001eff, #86edff);
 }
 
 html[data-theme="blue"] .banner {
@@ -124,6 +124,7 @@ html[data-theme="blue"] .banner {
     ),
     url("bg9.jpg");
 }
+
 
 
 
@@ -451,19 +452,27 @@ button.active {
     border: 1px solid rgba(255,255,255,0.48);
     box-shadow: 0 8px 30px rgba(0,0,0,0.22);
 
+    /* CLOSED state */
     opacity: 0;
-    transform: translateX(0) scale(0.85);
-    transition: transform 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.3s ease;
+    transform: translateX(300px) scale(0.88);
+    transform-origin: center left;
+
+    transition:
+        transform 0.45s cubic-bezier(.22,1,.36,1),
+        opacity 0.3s ease;
 
     pointer-events: none;
     z-index: 1;
+    will-change: transform, opacity;
 }
 
 .info.show {
+    /* OPEN state */
     opacity: 1;
     transform: translateX(340px) scale(1);
     pointer-events: auto;
 }
+
 
 /* Title */
 .info h3 {
@@ -1664,8 +1673,12 @@ function openInfo(type) {
 
 
 
-    infoBox.offsetHeight;
-    infoBox.classList.add("show");
+    infoBox.classList.remove("show");
+    infoBox.getBoundingClientRect();
+    requestAnimationFrame(() => {
+        infoBox.classList.add("show");
+    });
+
 
     setTimeout(() => {
         document.querySelectorAll(".progress-fill").forEach((bar, i) => {
