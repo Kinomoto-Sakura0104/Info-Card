@@ -1,3 +1,8 @@
+<!--set the website to 80% :D-->
+<!--Made with heart by Kaede Ayaka, credit when using the template-->
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +13,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 <style>
-/* Blue theme special rules */
 [data-theme="blue"] .dynamic_island {
   background: #000 !important;
 }
@@ -235,7 +239,7 @@ body {
 
 /* top-left arc */
 .avatar-wrap .quarter_top {
-  bottom: -11px;    /* small visible gap */
+  bottom: -11px;
   left: -11px;
   border-top: none;
   border-right: none;
@@ -278,7 +282,8 @@ body {
 
 
 /* Name */
-.profile h2 {
+.profile h2 { 
+    /* font-family: "Dancing Script", cursive; */
     margin-bottom: 20px;
     text-shadow: 0 0 10px rgba(255,255,255,0.25);
     opacity: 0;
@@ -410,16 +415,16 @@ body {
 }
 
 button {
-    padding: 12px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    cursor: pointer;
-    background: rgba(255,255,255,0.24);
-    font-size: 15px;
-    font-weight: 500;
-    transition: 0.25s ease;
-    opacity: 0;
-    animation: textUp 0.6s ease forwards;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  background: rgba(255,255,255,0.24);
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.25s ease;
+  opacity: 0;
+  animation: textUp 0.6s ease forwards;
 }
 
 button:nth-child(1) { animation-delay: 0.6s; }
@@ -483,7 +488,7 @@ button.active {
 
 /* ===== TEXT STATES ===== */
 
-/* Normal visible state (AFTER animation) */
+/* Normal visible state */
 .info h3,
 .info .info-content li,
 .info .info-content p {
@@ -491,7 +496,7 @@ button.active {
     transform: translateY(0);
 }
 
-/* BEFORE showup animation */
+/* before animation */
 .info.is-animating h3,
 .info.is-animating .info-content li,
 .info.is-animating .info-content p {
@@ -499,7 +504,7 @@ button.active {
     transform: translateY(14px);
 }
 
-/* DURING close */
+/* during close */
 .info.is-closing h3,
 .info.is-closing .info-content li,
 .info.is-closing .info-content p {
@@ -672,7 +677,6 @@ button.active {
     opacity: 0;
 }
 
-/* prevent pointer flashing during transitions */
 .info:not(.show) .progress-pointer {
     opacity: 0 !important;
     animation: none !important;
@@ -1007,8 +1011,6 @@ button.active {
   max-height: 260px;
   overflow-y: auto;
   padding-right: 4px;
-
-  /* fade text at top + bottom */
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
@@ -1063,7 +1065,7 @@ button.active {
 }
 
 .song-name {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 /* ===== FADED SEPARATOR LINE ===== */
@@ -1091,7 +1093,7 @@ button.active {
   transform: translateY(5px);
 }
 
-/* ===== MUSIC LIST ITEM APPEAR ===== */
+/* ===== MUSIC LIST ITEM ===== */
 .song-item {
   opacity: 0;
   transform: scale(0.96);
@@ -1173,15 +1175,27 @@ button.active {
 
 #waveform {
   width: 100%;
-  height: 30px;
+  height: 40px;
   margin-top: 5px;
   opacity: 0.85;
+  transform: translateY(20px) !important;
 }
 
 .playing #waveform {
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
 }
 
+.waveform-wrap {
+  width: 100%;
+  height: 65px;
+  border-radius: 8px !important;
+  overflow: hidden;
+  background: transparent;
+}
+
+#waveform {
+  display: block;
+}
 
 /* ===== TIME DISPLAY ===== */
 .time-display {
@@ -1217,7 +1231,6 @@ button.active {
   opacity: 0.85;
   pointer-events: none;
 }
-
 
 /* ===== KEYFRAMES ===== */
 @keyframes cardUp {
@@ -1311,7 +1324,7 @@ button.active {
 
         <div class="time-display main-clock" id="timeDisplay">
           <span class="time-label">My local time (GMT+7)</span>
-          <span class="time-value" id="clockValue">--:--:-- --/--/----</span>
+          <span class="time-value" id="clockValue">--:--:-- --/--/---- ...°C/...°F</span>
         </div>
 
 
@@ -1343,7 +1356,9 @@ const quotes = [
     "Even small steps still move you forward",
     "The night is gentle to those who wait",
     "In the world with full of wrong, I want you to smile",
-    "Food is the thing that can calm your little belly .^."
+    "Food is the thing that can calm your little belly .^.",
+    "Everything will be okay",
+    "59 6F 75 27 72 65 20 63 75 74 65 20 63 3A"
   ];
 
   const quoteEl = document.querySelector(".profile .quote");
@@ -1353,7 +1368,7 @@ const quotes = [
 
     // Reset animation
     quoteEl.style.animation = "none";
-    quoteEl.offsetHeight; // force reflow
+    quoteEl.offsetHeight;
 
     quoteEl.textContent = `"${randomQuote}"`;
 
@@ -1462,8 +1477,13 @@ function openInfo(type) {
         text.innerHTML = `
             <p><b>Close people to me:</b></p>
             <p class="info-note" style="font-size:14px;">
-                Q, Heli, Snowey, Nekonyah, Nyako, Lena, Aqua, Fey Fey, Hinata, trixten,
+                Aqua, Fey Fey, Hinata, trixten,
                 Hanako, Foxy, potato, soko, tienanh, blossom melody, arko, more...
+            </p>
+
+            <p><b>Specials:3</b></p>
+            <p class="info-note" style="font-size:14px;">
+                Q, Heli, Snowey, Nekonyah, Nyako, Lena
             </p>
 
             <p><b>Programming skill progress:</b></p>
@@ -1750,7 +1770,7 @@ let currentSongIndex = 0;
 /* ===== WAVEFORM SETUP ===== */
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const analyser = audioCtx.createAnalyser();
-analyser.fftSize = 1024;
+analyser.fftSize = 512;
 
 const source = audioCtx.createMediaElementSource(audio);
 source.connect(analyser);
@@ -1837,6 +1857,12 @@ const musicList = [
     duration: "3:32"
   },
   {
+    title: "Blind Spots",
+    artist: "C418",
+    file: "Blind Spots.mp3",
+    duration: "5:32"
+  },
+  {
     title: "blu",
     artist: "Zachz Winner",
     file: "blu.mp3",
@@ -1877,6 +1903,18 @@ const musicList = [
     artist: "Aurel Surya Lie",
     file: "Cute.mp3",
     duration: "2:58"
+  },
+  {
+    title: "Danny",
+    artist: "C418",
+    file: "Danny.mp3",
+    duration: "4:14"
+  },
+  {
+    title: "Dreiton",
+    artist: "C418",
+    file: "Dreiton.mp3",
+    duration: "8:17"
   },
   {
     title: "First Date",
@@ -1938,11 +1976,17 @@ const musicList = [
     file: "komorebi.mp3",
     duration: "4:47"
   },
-    {
+  {
     title: "Mice on Venus",
     artist: "C418",
     file: "Mice on Venus.mp3",
     duration: "4:41"
+  },
+  {
+    title: "Minecraft",
+    artist: "C418",
+    file: "Minecraft.mp3",
+    duration: "4:14"
   },
   {
     title: "Lover Online",
@@ -2119,7 +2163,11 @@ function getMusicHTML() {
       </div>
 
         <div class="progress-area fade-in delay-2">
+
+          <div class="waveform-wrap">
             <canvas id="waveform" width="320" height="15"></canvas>
+          </div>
+
             <input type="range" id="progressBar" value="0">
             <div class="time-row">
                 <span id="currentTime">0:00</span>
@@ -2402,34 +2450,79 @@ document.addEventListener("DOMContentLoaded", () => {
   const clockEl = document.getElementById("clockValue");
   if (!clockEl) return;
 
+  const CITY_NAME = "Ho Chi Minh City";
+  const TIMEZONE_OFFSET = 7; // Timezone
+
+  let tempStr = "...°C/...°F";
+  let coords = null;
+
   function pad(n) {
     return String(n).padStart(2, "0");
+  }
+
+  async function resolveCity() {
+    try {
+      const res = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(CITY_NAME)}&count=1`
+      );
+      const data = await res.json();
+      if (data.results && data.results.length) {
+        coords = {
+          lat: data.results[0].latitude,
+          lon: data.results[0].longitude
+        };
+      }
+    } catch {}
+  }
+
+  async function fetchTemperature() {
+    if (!coords) return;
+
+    try {
+      const res = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current_weather=true`
+      );
+      const data = await res.json();
+
+      const c = data.current_weather.temperature;
+      const f = c * 9 / 5 + 32;
+
+      tempStr = `${c.toFixed(1)}°C/${f.toFixed(1)}°F`;
+    } catch {
+      tempStr = "...°C/...°F";
+    }
   }
 
   function updateClock() {
     const now = new Date();
     const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-    const hanoi = new Date(utc + 7 * 3600000);
+    const local = new Date(utc + TIMEZONE_OFFSET * 3600000);
 
     clockEl.textContent =
-      `${pad(hanoi.getHours())}:` +
-      `${pad(hanoi.getMinutes())}:` +
-      `${pad(hanoi.getSeconds())} ` +
-      `${pad(hanoi.getDate())}/` +
-      `${pad(hanoi.getMonth() + 1)}/` +
-      hanoi.getFullYear();
+      `${pad(local.getHours())}:` +
+      `${pad(local.getMinutes())}:` +
+      `${pad(local.getSeconds())} ` +
+      `${pad(local.getDate())}/` +
+      `${pad(local.getMonth() + 1)}/` +
+      `${local.getFullYear()} ` +
+      tempStr;
   }
 
-  updateClock();
-  setInterval(updateClock, 1000);
-});
+  (async () => {
+    await resolveCity();
+    await fetchTemperature();
+    updateClock();
 
+    setInterval(updateClock, 1000);
+    setInterval(fetchTemperature, 1000);
+  })();
+});
 
 /* ======== GAINNODE ======== */
 const playerContext = new (window.AudioContext || window.webkitAudioContext)();
 
 const playerAnalyser = playerContext.createAnalyser();
-playerAnalyser.fftSize = 1024;
+playerAnalyser.fftSize = 512;
 
 const playerGain = playerContext.createGain();
 playerGain.gain.value = 1.5;
@@ -2452,7 +2545,6 @@ audio.addEventListener("play", () => {
     playerContext.resume();
   }
 });
-
 
 </script>
 
