@@ -1449,7 +1449,7 @@ function openInfo(type) {
         title.textContent = "About Me";
         text.innerHTML = `
         <ul>
-            <li><b>Main: </b> a 15 years old student attempting in coder course (dont know which to choose yet), ambidextrous</li>
+            <li><b>Main: </b> a <b id="age">15</b> years old student attempting in coder course (dont know which to choose yet), ambidextrous</li>
             <li><b>DOB:</b> April 14th</li>
             <li><b>Nationality:</b> Vietnamese</li>
             <li><b>Personality:</b> INTP-T</li>
@@ -1460,7 +1460,12 @@ function openInfo(type) {
             <li><b>Music:</b> Mostly prefer relaxing and chilling genres like lofi, piano; pluggnb</li>
             <li><b>Other stuff:</b> Love rain smell and rainy days, gotten used to lightmode, handling 2 projects (I think?)</li>
         </ul>`;
-    }
+        const birth = new Date(2010, 4, 14);
+        const today = new Date();
+        let age = today.getFullYear() - birth.getFullYear();
+        if (today < new Date(today.getFullYear(), birth.getMonth(), birth.getDate())) age--;
+        document.getElementById("age").textContent = `${age}`;
+            }
 
     if (type === "rules") {
         title.textContent = "Rules";
