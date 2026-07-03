@@ -1,32 +1,38 @@
-<!--set the website size to 80% :D-->
+<!--set the website to 80% :D-->
 <!--Made with heart by Kaede Ayaka, credit when using the template-->
 
 
+<!--your pfp, banners, web background is in the same folder with this file `index.html`, music in music_mp3s, gallery in recommend_pfps, dont mess up these!-->
+<!--use musicextract.py (for music) and generate_list.py (for gallery) to generate list after changing content-->
+<!--You can adjust where i note, dont touch the engines (no-comment blocks) or it will make the card worse!-->
+<!--dont fix any other files like .gitignore or .git folder-->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,1,0" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,1,0" rel="stylesheet"> <!--Icon link-->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet"> <!--font link-->
 <title>Profile Card</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 <style>
-[data-theme="blue"] .dynamic_island {
+/*color of the dynamic island for light themes*/
+[data-theme="blue"] .dynamic_island { /*dynamic island*/
   background: #000 !important;
 }
 
-[data-theme="blue"] .theme-switcher button {
+[data-theme="blue"] .theme-switcher button { /*main button color*/
   color: #fff;
   background: rgba(0,0,0,0.75);
 }
 
 [data-theme="blue"] .theme-switcher button:hover {
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.9); /*color of the button when hovering*/
 }
 
-
+/*template starts*/
 /* ================================
    THEME: PINK
    ================================ */
@@ -45,7 +51,7 @@ html[data-theme="pink"] body::before {
 }
 
 html[data-theme="pink"] body {
-  background:
+  background:  /*soft overlay from top to bottom, adjust here*/
     radial-gradient(circle at 20% 30%, rgba(255, 131, 187, 0.5), transparent 45%),
     radial-gradient(circle at 80% 70%, rgba(255, 0, 0, 0.5), transparent 45%),
     linear-gradient(180deg, #ffcce8, #ff006a);
@@ -58,8 +64,9 @@ html[data-theme="pink"] .banner {
       rgba(255,240,245,0.55),
       rgba(255,120,180,0.45)
     ),
-    url("gif-banner.gif");
+    url("gif-banner.gif"); /*your banner gif, must have in this folder*/
 }
+/*template ends*/
 
 /* ================================
    THEME: DARK
@@ -146,7 +153,7 @@ html[data-theme="blue"] .banner {
 * {
     box-sizing: border-box;
     font-family: "Inter", "Segoe UI", sans-serif;
-    color: #fff;
+    color: #fff; /*default text color*/
 }
 
 /* ===== BACKGROUND ===== */
@@ -154,7 +161,7 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: url("bg6.jpg") center / cover no-repeat;
+    background: url("bg6.jpg") center / cover no-repeat; /*default background of the web*/
     filter: blur(6px) brightness(0.9);
     opacity: 0.68;
     z-index: -2;
@@ -164,7 +171,7 @@ body::before {
 body {
     margin: 0;
     min-height: 100vh;
-    background: linear-gradient(180deg, #aa00ff, #f700ff);
+    background: linear-gradient(180deg, #aa00ff, #f700ff); /*default theme as pink*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -484,6 +491,7 @@ button.active {
     text-align: center;
     font-size: 22px;
     margin-bottom: 16px;
+    color: #FFF !important;
 }
 
 /* ===== TEXT STATES ===== */
@@ -1232,6 +1240,123 @@ button.active {
   pointer-events: none;
 }
 
+/* Nút dấu chấm trắng nhỏ */
+.links-trigger {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 9.4px 1.5px rgba(255,255,255,1); /*glow effect*/
+    transition: transform 0.3s ease;
+    z-index: 10;
+    animation: colorClosing 0.5s ease-in-out forwards;
+}
+
+.links-trigger:hover {
+    transform: scale(1.5);
+}
+
+.links-trigger.active{
+  animation: color 0.5s ease-in-out forwards;
+  background: #ffbebe;
+  box-shadow: 0 0 9.4px 1.5px #ffd4d4; /*glow effect*/
+}
+@keyframes color {
+  0% {
+    background: white;
+  };
+  100% {
+    background: #ffbebe;
+  }
+}
+
+@keyframes colorClosing {
+  0% {
+    background: #ffbebe;
+  };
+  100% {
+    background: white;
+  }
+}
+.info{
+  color: #fff;
+}
+.info.fly-down {
+  opacity: 1;
+  color: #fff !important;
+  animation: flyDown 0.6s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.social-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:10px;
+}
+
+.social-grid a{
+    width:72px;
+    height:72px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:auto;
+
+    border-radius:20px;
+
+    text-decoration:none;
+
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2);
+
+    backdrop-filter:blur(8px);
+
+    transition:
+        transform .28s cubic-bezier(.22,1,.36,1),
+        background .28s,
+        box-shadow .28s;
+}
+
+.social-grid a:hover{
+
+    background:rgba(255,255,255,.22);
+
+    transform:
+        translateY(-6px)
+        scale(1.08);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.25),
+        inset 0 0 12px rgba(255,255,255,.2);
+}
+
+.social-grid svg{
+    width:30px;
+    height:30px;
+
+    color:white;
+    stroke-width:2;
+}
+.social-grid i{
+    font-size:32px;
+    color:#fff;
+}
+
+
+.credit {
+  font-family: "Dancing Script", cursive;
+  font-size: 13.5px;
+  left: 10px;
+  width: 150px;
+  height: 3px;
+}
+
 /* ===== KEYFRAMES ===== */
 @keyframes cardUp {
     from { opacity: 0; transform: translateY(40px) scale(0.94); }
@@ -1301,14 +1426,14 @@ button.active {
         <div class="avatar-zone">
             <div class="avatar-wrap">
                 <span class="quarter_top"></span>
-                <img src="pfp.png" class="avatar">
+                <img src="pfp.png" class="avatar"> <!--set your default pfp here, must have image in this folder-->
 <!-- avatar image -->
                 <span class="quarter_bottom"></span>
             </div>
         </div>
 
         <h2>Kaede Ayaka</h2>
-        <div class="quote">“Don't panic, the moon is lost in the sea”</div>
+        <div class="quote">“Don't panic, the moon is lost in the sea”</div> <!--quote goes here, adjust your quote sets in random list (line 1350)-->
 
         <!--seperators-->
         <div class="dcircle"></div>
@@ -1324,19 +1449,23 @@ button.active {
 
         <div class="time-display main-clock" id="timeDisplay">
           <span class="time-label">My local time (GMT+7)</span>
-          <span class="time-value" id="clockValue">--:--:-- --/--/---- ...°C/...°F</span>
+          <span class="time-value" id="clockValue">--:--:-- --/--/---- ...°C/...°F</span> <!--this is your local time, date, and temperature, remember to fix CITY_NAME (2458) and TIMEZONE_OFFSET (2459) to match your location-->
         </div>
 
 
-        <div class="dynamic_island">
+        <div class="dynamic_island"> <!--dynamic island theme switcher-->
         <div class="theme-switcher">
             <button data-theme="purple">Purple</button>
             <button data-theme="pink">Pink</button>
             <button data-theme="dark">Dark</button>
             <button data-theme="blue">Blue</button>
+            <!--list all theme you have (4 is best); format <button data-theme="your_theme">text</button>-->
         </div>
       </div>
 
+
+      <div class="links-trigger" id="testButton"></div>
+      <div class="credit">Made by Kaede Ayaka (me) &#60;3</div>
     </div>
 
     <div class="info" id="infoBox">
@@ -1347,7 +1476,27 @@ button.active {
 </div>
 
 <script>
-const quotes = [
+document.getElementById("testButton").addEventListener("click", toggleLinks);
+function toggleLinks() {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    buttons.forEach(b => b.classList.remove("active"));
+
+    const testButton = document.getElementById("testButton");
+
+    if (infoBox.classList.contains("show")) {
+        closeInfo(() => {
+            testButton.classList.remove("active");
+        });
+    } else {
+        openInfo("links");
+        testButton.classList.add("active");
+    }
+}
+
+
+const quotes = [ //here are some random quotes, you can adjust
     "Don't panic, the moon is lost in the sea",
     "Soft hearts are not weak, they are brave",
     "Bloom at your own pace",
@@ -1447,6 +1596,8 @@ function openInfo(type) {
 
     if (type === "about") {
         title.textContent = "About Me";
+        //this is your main info, adjust here
+        //format <li><b>...</li></b>, dont miss! Either the <ul>
         text.innerHTML = `
         <ul>
             <li><b>Main: </b> a <b id="age">15</b> years old student attempting in coder course (dont know which to choose yet), ambidextrous</li>
@@ -1456,45 +1607,54 @@ function openInfo(type) {
             <li><b>Gender:</b> Ask me</li>
             <li><b>Interests:</b> Crocheting, coding, reading books (light novels the most), manga (rarely)</li>
             <li><b>Sports:</b> Badminton, volleyball, shuttlecock kicking</li>
-            <li><b>Games:</b> Minecraft, Geometry Dash, NES Tetris (practicing for level 18+), ADOFAI, 2048, Cell Machine</li>
+            <li><b>Games:</b> Minecraft, Geometry Dash, NES Tetris (practicing for level 18+)</li>
             <li><b>Music:</b> Mostly prefer relaxing and chilling genres like lofi, piano; pluggnb</li>
-            <li><b>Other stuff:</b> Love rain smell and rainy days, gotten used to lightmode, love classic Euclidean constructions</li>
+            <li><b>Other stuff:</b> Love rain smell and rainy days, gotten used to lightmode, handling 2 projects (I think?)</li>
         </ul>`;
-        const birth = new Date(2010, 4, 14);
+        const birth = new Date(2010, 4, 14); //your birthday, format (YYYY, M, DD)
         const today = new Date();
         let age = today.getFullYear() - birth.getFullYear();
         if (today < new Date(today.getFullYear(), birth.getMonth(), birth.getDate())) age--;
         document.getElementById("age").textContent = `${age}`;
-            }
+    }
 
     if (type === "rules") {
         title.textContent = "Rules";
+        //some of your rules
         text.innerHTML = `
         <ul>
-            <li>Ask me before sending DMs or a friend request, or else it would be ignored</li>
-            <li>Dont leak my secret i told you out of public, or else... (I respect and keep your secrets, so please do)</li>
-            <li>Only share stuffs if you feel <b>comfortable enough</b>, in order to avoid any unexpected dramas between both</li>
+            <li>Interact before sending DMs or a friend request, or else it would be ignored</li>
+            <li>Please ask me before sending a friend request or just simply a DM.</li>
+            <li>Only share if you feel <b>comfortable enough</b>, in order to avoid any unexpected dramas between both</li>
         </ul>`;
     }
 
     if (type === "others") {
         title.textContent = "Others";
+        //these are other contents about you
         text.innerHTML = `
+
+<!--This is a single section template, copy to create another section or just delete uneccessary ones for you-->
             <p><b>Close people to me:</b></p>
             <p class="info-note" style="font-size:14px;">
-                Aqua, Fey Fey, trixten,
-                Hanako, Foxy, Hina, Shina, tienanh, blossom melody, more...
+                Aqua, Fey Fey, Hinata, trixten,
+                Hanako, Foxy, potato, soko, tienanh, blossom melody, arko, more...
             </p>
+<!----------------------------->
 
             <p><b>Specials:3</b></p>
             <p class="info-note" style="font-size:14px;">
-                Snowey/Nyakari, Nekonyah, Nyako (3/4/26), Lena, Mako-chan, Hinata/Devres, Xenon, Lena
+                Q, Heli, Snowey, Nekonyah, Nyako, Lena
             </p>
 
+
+<!--delete this if you dont do coding, or just delete those you dont-->
             <p><b>Programming skill progress:</b></p>
+
 
             <div class="progress-group">
 
+<!--template starts-->
                 <div class="progress-item">
 
                     <div class="progress-label">HTML</div>
@@ -1508,6 +1668,8 @@ function openInfo(type) {
                     </div>
 
                 </div>
+
+<!--template ends-->
 
                 <div class="progress-item">
 
@@ -1563,10 +1725,10 @@ function openInfo(type) {
                 <div class="progress-item">
                     <div class="progress-label">Pascal</div>
                     <div class="progress-track">
-                        <div class="progress-fill" data-progress="24"></div>
+                        <div class="progress-fill" data-progress="24"></div> <!--fix the number below too so it syncs!-->
 
                         <div class="progress-pointer">
-                            <span class="pointer-bubble">24%</span>
+                            <span class="pointer-bubble">24%</span> <!--second reminder, remember to fix this one, same as remaining template in coding progress bar c:-->
                         </div>
                     </div>
                 </div>
@@ -1581,7 +1743,7 @@ function openInfo(type) {
     if (type === "gallery") {
         title.textContent = "Recommended pfps";
 
-        const images = [
+        const images = [ //here is your pfps stored in recommend_pfps, run generate_list.py to paste the content here, start from "[" (keep the variable name!)
             "recommend_pfps/pfp1.jpg",
             "recommend_pfps/z7457270146748_f1c2db39cf3dae3cd07192f052ffed6c.jpg",
             "recommend_pfps/z7457270151410_c833b2fb054f1b928a72723919a26915.jpg",
@@ -1696,6 +1858,38 @@ function openInfo(type) {
         `;
     }
 
+if (type === "links") {
+
+    title.textContent = "My Social Links";
+
+    // -line: strokes, -fill: fill
+    text.innerHTML = `
+    <!--Your social links-->
+
+
+        <div class="social-grid">
+          <!--template starts-->
+
+            <a href="https://github.com/kinomoto-sakura0104" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+            
+          <!--template ends-->
+
+            <a href="https://discord.com/users/1063827637354631239" target="_blank">
+                <i class="ri-discord-line"></i>
+            </a>
+
+            <a href="https://youtube.com/@kaede_ayaka" target="_blank">
+                <i class="ri-youtube-line"></i>
+            </a>
+
+        </div>
+    `;
+
+    setTimeout(() => lucide.createIcons(), 0);
+  }
+
 
 
     infoBox.classList.remove("show");
@@ -1723,7 +1917,7 @@ function openInfo(type) {
                 pointer.style.animation = "none";
                 pointer.offsetHeight;
 
-                pointer.style.animation = "pointerShow 0.45s cubic-bezier(.22,1,.36,1) forwards";
+                pointer.style.animation = "pointerShow 0.45s cubic-bezier(.22,1,.36,1) forwards"; //this is the animation of the coding progress bar above, you can change to the one you want
             }, i * 120);
         });
     }, 820);
@@ -1759,6 +1953,7 @@ function closeInfo(callback) {
         profileCard.classList.remove("shift");
         buttons.forEach(b => b.classList.remove("active"));
         isAnimating = false;
+        document.getElementById("testButton").classList.remove("active");
         if (callback) callback();
     }, duration * 1000);
 }
@@ -1842,7 +2037,8 @@ audio.addEventListener("play", () => {
 
 /* ===== SONG DATA ===== */
 /* MUST USE: name, artist, file, duration */
-const musicList = [
+const musicList = [ // you must run musicextract.py to create the list, then paste it here (you can overwrite the entire list, start from `const`)
+//note that your music mp3 file is in folder music_mp3s
   {
     title: "A Little Love",
     artist: "Fiona Fung",
@@ -2096,6 +2292,7 @@ const musicList = [
     duration: "4:56"
   },
 ];
+
 /* ===== MUSIC HTML ===== */
 function musicOpen(type, btn) {
     // Active button state
@@ -2116,7 +2313,7 @@ function openMusic() {
   profileCard.classList.add("shift");
   infoBox.classList.add("is-animating");
 
-  title.textContent = "My music list";
+  title.textContent = "My music list"; // here is your title
   text.innerHTML = getMusicHTML();
   waveformCanvas = document.getElementById("waveform");
   waveformCtx = waveformCanvas.getContext("2d");
@@ -2455,8 +2652,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const clockEl = document.getElementById("clockValue");
   if (!clockEl) return;
 
-  const CITY_NAME = "Ho Chi Minh City";
-  const TIMEZONE_OFFSET = 7; // Timezone
+  const CITY_NAME = "Ho Chi Minh City"; // here is your city
+  const TIMEZONE_OFFSET = 7; // here is your timezone, e.g: 4 for gmt+4
 
   let tempStr = "...°C/...°F";
   let coords = null;
